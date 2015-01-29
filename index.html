@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+    <script>
+        'use strict';
+
+        /*
+         * Create a base class
+         */
+        class Animal {
+            /*
+             * The initialization method that will be
+             * called when a new instance is created
+             */
+            constructor(options) {
+                // Save properties or use defaults
+                this._name = options.name || 'Animal';
+                this.move = options.move || 'moves';
+                this.legs = options.legs || 0;
+            }
+
+            /*
+             * Describes the animal's movement
+             */
+            describe() {
+                alert(this.name
+                    + ' walks with ' + this.legs
+                    + ' legs and ' + this.move + '.');
+            }
+
+            get name() {
+                return this._name.toUpperCase();
+            }
+
+            set name(value) {
+                this._name = value || 'Animal';
+            }
+        }
+
+        /*
+         * Inherit from that class
+         */
+        class Bird extends Animal {
+            constructor(options) {
+                // Save defaults
+                options.move = 'flies';
+                options.legs = 2;
+
+                // Call base constructor
+                super.constructor(options);
+            }
+        }
+
+        /*
+         * Inherit from that class
+         */
+        class Cat extends Animal {
+            constructor(options) {
+                // Save defaults
+                options.move = 'sneaks';
+                options.legs = 4;
+
+                // Call base constructor
+                super.constructor(options);
+            }
+        }
+
+        // Create instances
+        var creature = new Animal({ name: 'Creature' });
+        var tweety = new Bird({ name: 'Tweety' });
+        var sylvester = new Cat({ name: 'Sylvester' });
+
+        // Run
+        creature.describe();
+        tweety.describe();
+        sylvester.describe();
+    </script>
+</body>
+</html>
