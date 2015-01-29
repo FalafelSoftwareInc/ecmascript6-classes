@@ -18,8 +18,10 @@
              * called when a new instance is created
              */
             constructor(options) {
+                options = options || {};
+
                 // Save properties or use defaults
-                this._name = options.name || 'Animal';
+                this.name = options.name;
                 this.move = options.move || 'moves';
                 this.legs = options.legs || 0;
             }
@@ -71,7 +73,7 @@
         }
 
         // Create instances
-        var creature = new Animal({ name: 'Creature' });
+        var creature = new Animal();
         var tweety = new Bird({ name: 'Tweety' });
         var sylvester = new Cat({ name: 'Sylvester' });
 
